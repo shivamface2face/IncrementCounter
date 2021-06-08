@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        background-color: rgb(5, 82, 82);
+      }
+      .container {
+        height: 80vh;
+        width: 100%;
+        margin-top: 10%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+      }
+      .counter {
+        color: yellow;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="card">
+        <h1>++</h1>
+        <h1 class="counter" data-target="4000"></h1>
+        <p>project completed</p>
+      </div>
+      <div class="card">
+        <h1>**</h1>
+        <h1 class="counter" data-target="1500"></h1>
+        <p>our happy client</p>
+      </div>
+
+      <div class="card">
+        <h1>--</h1>
+        <h1 class="counter" data-target="500"></h1>
+        <p>on Going project</p>
+      </div>
+    </div>
+    <script>
+      const counters = document.querySelectorAll(".counter");
+
+      counters.forEach((counter) => {
+        counter.innerHTML = 0;
+
+        const updateCounter = () => {
+          const targetCounter = +counter.getAttribute("data-target");
+        //   console.log(targetCounter)
+
+        const startingCount=Number(counter.innerHTML);
+
+        const IncR=targetCounter/100;
+
+        if(startingCount<targetCounter){
+            counter.innerHTML=`${Math.round(startingCount+IncR)}`
+            setTimeout(updateCounter,10)
+        }
+
+        };
+
+        updateCounter();
+      });
+    </script>
+  </body>
+</html>
